@@ -3,6 +3,7 @@ import "./App.css";
 import Row from "./components/row/Row";
 import requests from "./request";
 import Banner from "./components/banner/Banner";
+import "./App.css";
 
 function App() {
   return (
