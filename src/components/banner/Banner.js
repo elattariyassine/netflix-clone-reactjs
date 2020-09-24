@@ -9,21 +9,28 @@ const Banner = () => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
-      console.log(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      );
+    // async function fetchData() {
+    //   const request = await axios.get(requests.fetchNetflixOriginals);
+    //   console.log(
+    //     request.data.results[
+    //       Math.floor(Math.random() * request.data.results.length - 1)
+    //     ]
+    //   );
+    //   setMovie(
+    //     request.data.results[
+    //       Math.floor(Math.random() * request.data.results.length - 1)
+    //     ]
+    //   );
+    //   return request;
+    // }
+    // fetchData();
+    axios.get(requests.fetchNetflixOriginals).then((response) => {
       setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
+        response.data.results[
+          Math.floor(Math.random() * response.data.results.length - 1)
         ]
       );
-      return request;
-    }
-    fetchData();
+    });
   }, []);
 
   const truncate = (str, n) => {
