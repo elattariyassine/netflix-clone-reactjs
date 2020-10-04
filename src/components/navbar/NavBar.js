@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
+
 import "./NavBar.css";
 
 const NavBar = () => {
   const [show, handleShow] = useState(false);
 
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      handleShow(true);
+    } else handleShow(false);
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        handleShow(true);
-      } else handleShow(false);
-    });
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll");
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
